@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>굿모닝에어컨 | 나기민</title>
+
+    <style>
+      body {
+        margin: 0;
+        font-family: "Noto Sans KR", Arial, sans-serif;
+        background: #f4f7fb;
+        color: #333;
+      }
+
+      .container {
+        max-width: 480px;
+        margin: auto;
+        padding: 20px;
+      }
+
+      .logo {
+        text-align: center;
+        margin-top: 24px;
+      }
+
+      .logo img {
+        width: 180px;
+        display: block;
+        margin: 0 auto 14px;
+      }
+
+      .title {
+        font-size: 26px;
+        font-weight: 800;
+        color: #102c6c;
+        letter-spacing: -0.04em;
+      }
+
+      .subtitle {
+        margin-top: 10px;
+        font-size: 16px;
+        line-height: 1.6;
+      }
+
+      .highlight {
+        color: #2a7de1;
+        font-weight: 800;
+      }
+
+      .top-features {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 10px;
+        margin-top: 20px;
+        padding: 14px 0;
+        border-top: 1px solid rgba(42, 125, 225, 0.12);
+        border-bottom: 1px solid rgba(42, 125, 225, 0.12);
+      }
+
+      .feature-item {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        gap: 7px;
+        color: #20345e;
+        text-align: center;
+        font-size: 13px;
+        font-weight: 700;
+        letter-spacing: -0.02em;
+        white-space: nowrap;
+      }
+
+      .feature-icon {
+        width: 24px;
+        height: 24px;
+        color: #1f63d0;
+        flex: 0 0 auto;
+      }
+
+      .card {
+        background: white;
+        padding: 25px;
+        margin-top: 25px;
+        border-radius: 15px;
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+        text-align: center;
+      }
+
+      .brand-card {
+        padding-top: 20px;
+        padding-bottom: 5px;
+        margin-top: 18px;
+        margin-bottom: 14px;
+      }
+
+      .profile-card {
+        padding-top: 10px;
+        margin-top: 0;
+      }
+
+      .brands {
+        display: grid;
+        grid-template-columns: 1.3fr 1fr 1fr;
+        align-items: center;
+        gap: 10px;
+        margin-bottom: 20px;
+      }
+
+      .brands .brand-slot {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 54px;
+        position: relative;
+      }
+
+      .brands .brand-slot:not(:last-child)::after {
+        content: "";
+        position: absolute;
+        top: 8px;
+        right: -5px;
+        width: 1px;
+        height: 38px;
+        background: linear-gradient(180deg, rgba(42, 125, 225, 0.05), rgba(42, 125, 225, 0.25), rgba(42, 125, 225, 0.05));
+      }
+
+      .brands img {
+        display: block;
+        width: auto;
+        max-width: 100%;
+        height: 40px;
+        object-fit: contain;
+      }
+
+      .brands .brand-slot:first-child img {
+        height: 46px;
+      }
+
+      .btn {
+        display: block;
+        padding: 15px;
+        margin-top: 10px;
+        border-radius: 10px;
+        text-decoration: none;
+        font-weight: 700;
+      }
+
+      .call {
+        background: #2a7de1;
+        color: white;
+      }
+
+      .kakao {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        background: #fee500;
+        color: #191919;
+      }
+
+      .kakao-icon {
+        width: 28px;
+        height: 28px;
+        flex: 0 0 auto;
+      }
+
+      .gallery {
+        margin-top: 0;
+      }
+
+      .gallery-card {
+        text-align: left;
+      }
+
+      .gallery h3 {
+        margin: 0 0 14px;
+        font-size: 24px;
+        font-weight: 800;
+        color: #102c6c;
+      }
+
+      .grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 10px;
+      }
+
+      .gallery-item {
+        position: relative;
+        overflow: hidden;
+        border-radius: 12px;
+        background: linear-gradient(180deg, #f6f9fd, #edf3fb);
+        aspect-ratio: 1 / 1;
+      }
+
+      .gallery-item.empty::after {
+        content: "이미지 준비중";
+        position: absolute;
+        inset: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 14px;
+        font-weight: 700;
+        color: #7e91b2;
+      }
+
+      .info-card {
+        padding: 20px 12px 14px;
+      }
+
+      .info-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+      }
+
+      .info-item {
+        padding: 0 8px;
+        text-align: center;
+      }
+
+      .info-item:not(:last-child) {
+        border-right: 1px solid rgba(42, 125, 225, 0.18);
+      }
+
+      .info-icon {
+        width: 30px;
+        height: 30px;
+        margin: 0 auto 10px;
+        color: #1f63d0;
+      }
+
+      .info-title {
+        margin: 0 0 6px;
+        font-size: 12px;
+        font-weight: 800;
+        color: #102c6c;
+        line-height: 1.35;
+      }
+
+      .info-text {
+        margin: 0;
+        font-size: 10px;
+        line-height: 1.55;
+        color: #4d5b76;
+        word-break: keep-all;
+      }
+
+      .footer {
+        text-align: center;
+        font-size: 12px;
+        margin-top: 30px;
+        color: #888;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="container">
+      <div class="logo">
+        <img src="./logo.svg" alt="굿모닝에어컨 로고" />
+        <div class="title">굿모닝에어컨</div>
+        <div class="subtitle">
+          <span class="highlight">시스템 에어컨</span> · 가정용 에어컨 설치 · 이전 설치 전문
+        </div>
+      </div>
+
+      <div class="top-features">
+        <div class="feature-item">
+          <svg class="feature-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M12 3L19 6V11C19 15.5 16.2 19.2 12 21C7.8 19.2 5 15.5 5 11V6L12 3Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" />
+            <path d="M9.2 11.9L11.1 13.8L14.8 10.2" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+          <span>정직한 시공</span>
+        </div>
+        <div class="feature-item">
+          <svg class="feature-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.8" />
+            <path d="M12 7.5V12L15.3 14.3" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+          <span>빠른 방문</span>
+        </div>
+        <div class="feature-item">
+          <svg class="feature-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M9.7 10.2L11.2 6.8C11.5 6.2 11.8 5 12.6 5C13.3 5 13.8 5.6 13.8 6.3V9.8H17C18.2 9.8 19 10.8 18.7 12L17.8 16.1C17.6 17 16.9 17.6 16 17.6H10.3C9.5 17.6 8.8 17 8.8 16.2V11.4C8.8 10.9 9.1 10.4 9.7 10.2Z" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
+            <path d="M5.4 10.4H7.7V17.6H5.4C4.8 17.6 4.4 17.1 4.4 16.6V11.4C4.4 10.8 4.8 10.4 5.4 10.4Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" />
+          </svg>
+          <span>합리적 가격</span>
+        </div>
+      </div>
+
+      <div class="card brand-card">
+        <div class="brands">
+          <div class="brand-slot">
+            <img src="./assets/brands/samsung-official-balanced.png" alt="Samsung 공식 로고" />
+          </div>
+          <div class="brand-slot">
+            <img src="./assets/brands/lg-official.svg" alt="LG 공식 로고" />
+          </div>
+          <div class="brand-slot">
+            <img src="./assets/brands/carrier-official.png" alt="Carrier 공식 로고" />
+          </div>
+        </div>
+      </div>
+
+      <div class="card profile-card">
+        <h2>나기민</h2>
+        <p>빠른 방문 · 합리적인 가격 · 깔끔한 시공</p>
+
+        <a href="tel:01093543702" class="btn call">📞 010-9354-3702</a>
+        <a href="#" class="btn kakao" aria-label="카카오톡 문의">
+          <svg class="kakao-icon" viewBox="0 0 28 28" fill="none" aria-hidden="true">
+            <path d="M14 3.5C8.6 3.5 4.2 6.9 4.2 11.3C4.2 14.1 6 16.5 8.9 17.8L7.8 22.3C7.7 22.8 8.2 23.2 8.7 22.9L13.7 19.6C13.8 19.6 13.9 19.6 14 19.6C19.4 19.6 23.8 16.1 23.8 11.8C23.8 7.3 19.4 3.5 14 3.5Z" fill="rgba(0,0,0,0.9)" />
+            <path d="M10 10.2H18" stroke="#FEE500" stroke-width="1.7" stroke-linecap="round" />
+            <path d="M10.4 13.1H17.6" stroke="#FEE500" stroke-width="1.7" stroke-linecap="round" />
+          </svg>
+          <span>카카오톡 문의</span>
+        </a>
+      </div>
+
+      <div class="card gallery-card">
+        <div class="gallery">
+          <h3>📸 시공 사례</h3>
+          <div class="grid">
+            <div class="gallery-item empty" aria-label="시공 사례 1 준비중"></div>
+            <div class="gallery-item empty" aria-label="시공 사례 2 준비중"></div>
+            <div class="gallery-item empty" aria-label="시공 사례 3 준비중"></div>
+            <div class="gallery-item empty" aria-label="시공 사례 4 준비중"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card info-card">
+        <div class="info-grid">
+          <div class="info-item">
+            <svg class="info-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M12 21C16.4 16.4 18.6 13.2 18.6 10.2C18.6 6.6 15.7 4 12 4C8.3 4 5.4 6.6 5.4 10.2C5.4 13.2 7.6 16.4 12 21Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" />
+              <circle cx="12" cy="10" r="2.1" stroke="currentColor" stroke-width="1.8" />
+            </svg>
+            <h4 class="info-title">서비스 지역</h4>
+            <p class="info-text">경기 남부 전지역<br />추가 지역 상담 가능</p>
+          </div>
+          <div class="info-item">
+            <svg class="info-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <circle cx="12" cy="12" r="8.6" stroke="currentColor" stroke-width="1.8" />
+              <path d="M12 7.8V12L15.3 14.2" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+            <h4 class="info-title">운영 시간</h4>
+            <p class="info-text">평일 08:00 - 20:00<br />주말/공휴일 상담 가능</p>
+          </div>
+          <div class="info-item">
+            <svg class="info-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M12 3L19 6V11C19 15.5 16.2 19.2 12 21C7.8 19.2 5 15.5 5 11V6L12 3Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" />
+              <path d="M9.2 11.9L11.1 13.8L14.8 10.2" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+            <h4 class="info-title">서비스 안내</h4>
+            <p class="info-text">시스템 에어컨 설치<br />가정용 설치 · 이전 설치</p>
+          </div>
+          <div class="info-item">
+            <svg class="info-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M8.2 6.4H15.8C17.5 6.4 18.8 7.8 18.8 9.4V14.6C18.8 16.2 17.5 17.6 15.8 17.6H13.7L10.8 19.8C10.1 20.3 9.2 19.8 9.2 18.9V17.6H8.2C6.5 17.6 5.2 16.2 5.2 14.6V9.4C5.2 7.8 6.5 6.4 8.2 6.4Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" />
+              <path d="M9.2 11.2H14.8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" />
+              <path d="M9.2 14H13.2" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" />
+            </svg>
+            <h4 class="info-title">고객 상담</h4>
+            <p class="info-text">친절하고 빠른 상담<br />언제든 문의 주세요</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer">© 굿모닝에어컨 All rights reserved.</div>
+    </div>
+  </body>
+</html>
