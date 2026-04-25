@@ -310,34 +310,38 @@
         }
 
         .hero {
-          grid-template-columns: minmax(0,1fr) 220px; /* 기존 200px */
-          gap: 4px;
+          grid-template-columns: 40% 60%;
+          gap: 8px;
+          align-items: center;
+          margin-top: 8px;
+        }
+
+        .hero-copy {
+          min-width: 0;
         }
 
         .hero-media {
           justify-content: flex-end;
-          align-self: start;
         }
 
-       .hero-media img {
-          width: min(100%, 348px);
+        .hero-media img {
+          width: 100%;
+          max-width: none;   /* 기존 290/348 제한 제거 */
         }
-
         .logo {
           text-align: left;
           margin-top: 10px;
         }
 
         .logo img {
-          width: 175px;
+          width: 175px;   /* 이전 축소 반영 */
+          max-width: 100%;
         }
 
         .title {
-          font-size: 34px;
-          line-height: 0.98;
-          letter-spacing: -0.06em;
+          font-size: 28px;
+          line-height: 1;
         }
-
         .subtitle {
           margin-top: 14px;
           font-size: 15px;
